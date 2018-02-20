@@ -70,13 +70,6 @@
                 <artifactId>cxf-codegen-plugin</artifactId>
                 <version>${cxf.version}</version>
                 <dependencies>
-                    <!-- CXF-specific "boolean" extension (other CXF extensions: http://preview.tinyurl.com/lhphmm3) -->
-                    <dependency>
-                        <groupId>org.apache.cxf.xjcplugins</groupId>
-                        <artifactId>cxf-xjc-boolean</artifactId>
-                        <version>3.1.0</version>
-                    </dependency>
-                    <!-- JAXB2 Basics Plugin -->
                     <dependency>
                         <groupId>org.jvnet.jaxb2_commons</groupId>
                         <artifactId>jaxb2-basics</artifactId>
@@ -88,7 +81,6 @@
                         <goals>
                            <goal>wsdl2java</goal>
                         </goals>
-
                         <configuration>
                             <wsdlOptions>
                                 <wsdlOption>
@@ -97,14 +89,7 @@
                                     </wsdl>
                                     <wsdlLocation>classpath:ShoppingService.wsdl</wsdlLocation>
                                     <extraargs>
-                                        <!-- Standard JAXB-available processing flags -->
-                                        <!-- <extraarg>-xjc-Xlocator,-mark-generated</extraarg> -->
                                         <extraarg>-xjc-b,${basedir}/src/main/resources/jaxb-bindings.xjb</extraarg>
-                                        <!-- CXF-specific extension -->
-                                        <extraarg>-xjc-Xbg</extraarg>
-                                        <!-- JAXB2 Basics Plugin -->
-                                        <!-- https://github.com/highsource/jaxb2-basics/wiki/JAXB2-ToString-Plugin -->
-                                        <!-- <extraarg>-xjc-XtoString</extraarg> -->
                                         <extraarg>-xjc-Xinheritance</extraarg>
                                     </extraargs>
                                 </wsdlOption>
