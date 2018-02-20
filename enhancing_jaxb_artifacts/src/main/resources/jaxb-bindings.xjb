@@ -26,19 +26,6 @@
 			multiple="true" required="false">
 			<inheritance:implements>client.Soapy</inheritance:implements>
 		</jaxb:bindings>
-
-<!--
-		<jaxb:bindings node="
-			//xs:complexType[
-				substring(@name, string-length(@name) 
-				- string-length('Info') +1) = 'Info']
-			|	
-			//xs:complexType[contains(@name, = 'Shipping')]
-			"
-			multiple="true" required="false">
-			<inheritance:implements>client.Soapy</inheritance:implements>
-		</jaxb:bindings>
--->
 	</jaxb:bindings>
 
 </jaxb:bindings>

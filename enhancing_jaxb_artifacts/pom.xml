@@ -3,20 +3,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-<!--
-    <parent>
-        <groupId>org.gmazza</groupId>
-        <artifactId>blog-samples</artifactId>
-        <version>1.0-SNAPSHOT</version>
-    </parent>
--->
 
-    <version>1.0-SNAPSHOT</version>
-    <groupId>org.gmazza.blog-samples.enhancing_jaxb_artifacts</groupId>
+    <version>0.0.1-SNAPSHOT</version>
+    <groupId>org.example</groupId>
     <artifactId>enhancing_jaxb_artifacts</artifactId>
     <name>Tutorial: Enhancing JAXB-generated classes</name>
     <packaging>jar</packaging>
-    <url>http://web-gmazza.rhcloud.com/blog/entry/enhancing-jaxb-artifacts</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -24,47 +16,8 @@
 	<cxf.version>3.2.2</cxf.version>
 	<exec.maven.version>1.6.0</exec.maven.version>
     </properties>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-frontend-jaxws</artifactId>
-            <version>${cxf.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-transports-http</artifactId>
-            <version>${cxf.version}</version>
-        </dependency>
-        <!-- JAXB Basics Plugin (https://github.com/highsource/jaxb2-basics)
-             needed at the module dependency level when additional methods
-             added by into JAXB-generated classes (e.g., -XtoString) reference
-             helper classes defined in JAXB2 Basics library.
-        -->
-        <dependency>
-            <groupId>org.jvnet.jaxb2_commons</groupId>
-            <artifactId>jaxb2-basics-runtime</artifactId>
-            <version>${jaxb2.basics.version}</version>
-        </dependency>
-    </dependencies>
-
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>${exec.maven.version}</version>
-                <configuration>
-                    <executable>java</executable>
-                    <arguments>
-                        <argument>-classpath</argument>
-                        <classpath/>
-                        <argument>client.WSClient</argument>
-                        <!-- Modify argument below for the item you wish to search eBay for. -->
-                        <argument>camera</argument>
-                    </arguments>
-                </configuration>
-            </plugin>
             <plugin>
                 <groupId>org.apache.cxf</groupId>
                 <artifactId>cxf-codegen-plugin</artifactId>
@@ -84,11 +37,12 @@
                         <configuration>
                             <wsdlOptions>
                                 <wsdlOption>
+
                                     <wsdl>
                                         ${basedir}/src/main/resources/ShoppingService.wsdl
                                     </wsdl>
-                                    <wsdlLocation>classpath:ShoppingService.wsdl</wsdlLocation>
-                                    <extraargs>
+<!--                                    <wsdlLocation>classpath:ShoppingService.wsdl</wsdlLocation>
+-->                                    <extraargs>
                                         <extraarg>-xjc-b,${basedir}/src/main/resources/jaxb-bindings.xjb</extraarg>
                                         <extraarg>-xjc-Xinheritance</extraarg>
                                     </extraargs>
@@ -101,6 +55,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
-
